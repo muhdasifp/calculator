@@ -18,11 +18,16 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      hoverColor: Colors.blue,
       onTap: onTap,
       child: Container(
         height: 75,
         width: equal ? 80 : 165,
         decoration: BoxDecoration(
+          color: bgColor,
+          boxShadow: [
+            BoxShadow(color: Colors.grey.shade50, offset: const Offset(5, 5))
+          ],
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(15),
         ),
