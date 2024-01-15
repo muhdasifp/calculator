@@ -20,17 +20,13 @@ class _ScreenState extends State<Screen> {
         input = '';
         output = '';
       });
-    } else if (taped == "DEL") {
-      setState(() {
-        input = '';
-      });
     } else if (taped == "=") {
       final finalInput = input.replaceAll('x', '*');
       Parser p = Parser();
       Expression exp = p.parse(finalInput);
       ContextModel contextModel = ContextModel();
       setState(() {
-        output = '${exp.evaluate(EvaluationType.REAL, contextModel)}=';
+        output = '${exp.evaluate(EvaluationType.REAL, contextModel)}';
       });
     } else {
       setState(() {
