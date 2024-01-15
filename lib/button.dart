@@ -2,33 +2,37 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 class MyButton extends StatelessWidget {
-  bool? function;
+  final bool function;
   final String text;
   final VoidCallback onTap;
+  final bool equal;
 
-  MyButton({
+  const MyButton({
     super.key,
     required this.text,
     this.function = true,
     required this.onTap,
+    this.equal = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      highlightColor: Colors.black,
       onTap: onTap,
       child: Container(
+        height: 75,
+        width: equal ? 80 : 165,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            gradient: LinearGradient(
-                colors: function! ? [btn1, btn2] : [fn1, fn2],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter)),
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(15),
+        ),
         child: Center(
           child: Text(
             text,
-            style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 40,
+                fontWeight: function ? FontWeight.normal : FontWeight.bold,
+                color: function ? Colors.white : fn2),
           ),
         ),
       ),
